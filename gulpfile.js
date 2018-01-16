@@ -1,7 +1,7 @@
 const gulp = require('gulp');
 const pug = require('gulp-pug');
 const sass = require('gulp-sass');
-const sourcemaps = require('gulp-sourcemaps');
+// const sourcemaps = require('gulp-sourcemaps');
 const babel = require("gulp-babel");
 const eslint = require("gulp-eslint");
 const livereload = require("gulp-livereload");
