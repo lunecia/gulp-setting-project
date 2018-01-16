@@ -1,0 +1,37 @@
+block config
+	include config
+
+doctype html
+html(lang='en')
+	head
+		meta(charset='UTF-8')
+		title Gulp Start Project #{subTitle}
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+		meta(name="format-detection", content="telephone=no")
+		meta(name='keywords', content=keywords)
+		meta(name='description', content=description)
+		link(href='https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css', rel='stylesheet', type='text/css')
+		link(href='https://fonts.googleapis.com/css?family='+googleFont,rel='stylesheet', type='text/css')
+		link(href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css', rel='stylesheet', type='text/css')
+		block style
+		link(href='../assets/style/main.css', rel='stylesheet', type='text/css')
+	body
+		header#header
+			.container
+				a.logo(href='home.html')
+					img(src='../assets/images/00-share/logo.png', alt='')
+				.nav-mobile
+					.hamberger
+						span.left
+						span.right
+				.header
+					+navLink(headMenu)
+
+		block content
+
+		footer#footer
+								
+
+		script(src='https://code.jquery.com/jquery-3.2.1.min.js', type='text/javascript')
+		block script
+		script(src='../assets/script/main.js', type='text/javascript')

@@ -1,0 +1,26 @@
+- var subTitle = ''
+- var keywords = ''
+- var description = ''
+- var googleFont = 'Crimson+Text:400,600'
+- var currentPage = ''
+
+
+//- nav
+
+- var headMenu = [{title: 'project concept', link: 'project-concept.html'}, {title: 'unit layout', link: 'unit-layout.html'}, {title: 'lifestyle', link: 'lifestyle.html'}, {title: 'amenities', link: 'amenities.html'}, {title: 'gallery', link: 'gallery.html'}, {title: 'enquiries', link: 'enquiries.html'}]
+
+
+mixin navLink(itemMenu,classname)
+	ul.nav(class=classname)
+		each item in itemMenu
+			if currentPage === item.link
+				- var menuLinkCur = {'href':item.link,'class':'active'}
+				li
+					a()&attributes(menuLinkCur)= item.title
+			else
+				- var menuLink = {'href':item.link}
+				li
+					a()&attributes(menuLink)= item.title
+
+
+

@@ -1,0 +1,1 @@
+{"version":3,"file":"main.css","sources":["main.sass","_config.sass","_header.sass","_footer.sass","_home.sass"],"sourcesContent":["@import \"_config\";\n@import \"_header\";\n@import \"_footer\";\n\n@import \"_home\";\n","","","",""],"names":[],"mappings":""}
