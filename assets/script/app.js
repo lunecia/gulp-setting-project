@@ -1,5 +1,5 @@
 'use strict';
 
-var name = 'lunecia';
+var name = 'lubia';
 
 console.log(name);

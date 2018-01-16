@@ -1,3 +1,3 @@
-let name = 'lunecia';
+let name = 'lubia';
 
 console.log(name);
