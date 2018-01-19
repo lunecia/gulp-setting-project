@@ -1,0 +1,258 @@
+//////////////////////////////////////
+
+//mixin
+
+//////////////////////////////////////
+
+// breakpoint
+$MQs: true
+
+=breakpoint($point) 
+  	@if ($MQs) 
+	    $bp-mobile: "(max-width: 40em)"
+	    $bp-mobile-wide: "(max-device-width: 736px) and (orientation: landscape)"
+	    $bp-tablet: "(max-width: 70em)"
+	    $bp-tablet-wide: "(min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1)"
+	    $bp-desktop: "(max-width: 100em)"
+	  
+	    @if $point == desktop 
+	      	@media #{$bp-desktop} 
+	      		@content
+	   
+	    @else if $point == tablet 
+	      	@media #{$bp-tablet}
+	      		@content
+	    
+	    @else if $point == tablet-wide 
+	      	@media #{$bp-tablet-wide}
+	      		@content
+	    
+	    @else if $point == mobile 
+	      	@media #{$bp-mobile} 
+	      		@content
+	    
+	    @else if $point == mobile-wide
+	      	@media #{$bp-mobile-wide} 
+	      		@content
+	    
+
+
+// clearfix
+%clearfix 
+	*zoom: 1
+	&:before, &:after 
+		content: " "
+		display: table
+	&:after 
+		clear: both
+	
+
+
+// pseudo
+=pseudo($display: block, $pos: absolute, $content: '')
+    content: $content
+    display: $display
+    position: $pos
+
+
+
+// Responsive ratio
+=responsive-ratio($x,$y, $pseudo: false) 
+    $padding: unquote( ( $y / $x ) * 100 + '%' )
+    @if $pseudo 
+        &:before 
+            @include pseudo($pos: relative)
+            width: 100%
+            padding-top: $padding   
+    @else 
+        padding-top: $padding
+    
+
+
+// ratina
+=ratina($image, $width, $height) 
+	@media (min--moz-device-pixel-ratio: 1.3),(-o-min-device-pixel-ratio: 2.6/2),(-webkit-min-device-pixel-ratio: 1.3),(min-device-pixel-ratio: 1.3),(min-resolution: 1.3dppx) 
+	    background-image: url($image)
+	    background-size: $width $height
+
+
+
+// fontsize
+=font-size($size) 
+	font-size: $size * 1px
+	font-size: $size * 0.1rem
+
+
+
+// aniamation
+=keyframes($animation-name)  
+    @keyframes #{$animation-name} 
+        @content
+=animation($str) 
+	animation: #{$str}
+
+
+
+// gradient
+=background-gradient($start-color, $end-color, $orientation) 
+    background: $start-color
+    @if $orientation == 'vertical' 
+    	background: linear-gradient(to bottom, $start-color, $end-color)
+    @else if $orientation == 'horizontal' 
+    	background: linear-gradient(to right, $start-color, $end-color)
+    @else 
+    	background: radial-gradient(ellipse at center, $start-color, $end-color)
+
+	
+
+
+
+
+//////////////////////////////////////
+
+//font-face
+
+//////////////////////////////////////
+
+@font-face
+    font-family: 'db_adman'
+    src: url('../fonts/db_adman_x_bd_v3.2-webfont.eot')
+    src: url('../fonts/db_adman_x_bd_v3.2-webfont.eot?#iefix') format('embedded-opentype'),url('../fonts/db_adman_x_bd_v3.2-webfont.woff2') format('woff2'),url('../fonts/db_adman_x_bd_v3.2-webfont.woff') format('woff'),url('../fonts/db_adman_x_bd_v3.2-webfont.ttf') format('truetype'),url('../fonts/db_adman_x_bd_v3.2-webfont.svg#db_adman_xbold') format('svg')
+    font-weight: normal
+    font-style: bold
+
+@font-face 
+    font-family: 'db_adman'
+    src: url('../fonts/db_adman_x_v3.2-webfont.eot')
+    src: url('../fonts/db_adman_x_v3.2-webfont.eot?#iefix') format('embedded-opentype'),url('../fonts/db_adman_x_v3.2-webfont.woff2') format('woff2'),url('../fonts/db_adman_x_v3.2-webfont.woff') format('woff'),url('../fonts/db_adman_x_v3.2-webfont.ttf') format('truetype'),url('../fonts/db_adman_x_v3.2-webfont.svg#db_adman_xregular') format('svg')
+    font-weight: normal
+    font-style: normal
+
+
+
+//////////////////////////////////////
+
+// variable
+
+//////////////////////////////////////
+
+$main: #ca2027
+$white: #ffffff
+$gray: #dadada
+$gray-d: #b8b8b8
+$gray-dd: #6f6f6f
+$gray-l: #e6e6e6
+$gray-ll: #f0f0f0
+
+$transition: 0.5s
+
+
+
+
+
+
+
+
+//////////////////////////////////////
+
+// global
+
+//////////////////////////////////////
+
+* 
+	margin: 0
+	padding: 0
+	box-sizing: border-box
+	font-family: 'db_adman', serif
+	font-weight: normal
+
+html
+	font-size: 62.5%
+body
+	background: $white
+a 
+	text-decoration: none
+	display: block
+	cursor: pointer
+	font-family: 'db_adman', serif
+	
+
+textarea
+	font-family: 'db_adman', serif
+.container 
+	width: 80%
+	display: block
+	margin: 0 auto
+	position: relative
+
+img
+	max-width: 100%
+ul 
+	list-style: none
+
+p,a 
+	+font-size(15)
+	&:hover
+		color: $main
+		transition: $transition
+
+.fa 
+	+font-size(25)
+	color: $main
+	background: transparent
+	padding: .22em .3em
+    border-radius: 50%
+
+
+h1 
+	+font-size(48)
+h2 
+	+font-size(40)
+h3 
+	+font-size(31)
+h4 
+	+font-size(25)
+h5 
+	+font-size(20)
+h6 
+	+font-size(16)
+p 
+	+font-size(15)
+input
+	+font-size(15)
+	background: transparent
+	border: 0
+	width: 100%
+	font-family: 'db_adman', serif
+	&:focus,
+	&:active
+		outline: 0
+
+
+select 
+	font-family: 'db_adman', serif
+	background: transparent
+
+
+button 
+	font-family: 'db_adman', serif
+
+
+
+
+
+
+
+
+
+
+
+//////////////////////////////////////
+
+// componant
+
+//////////////////////////////////////
+
+
+
+
